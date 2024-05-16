@@ -1,19 +1,29 @@
 <?php
-/*  Estos son comentarios de multiples lineas
-Linea 2
-Finaliza el comentario*/
-// Comentario de una sola linea
-/* INICIALIZACION DE VARIABLES */
-$NombreProyecto = "";
-$CodigoProyecto = "12345";
-$Resumen="";
-$Fecha="";
-
-echo "<h2>Script para registrar un proyecto</h2>";
-// El signo . sirve para concatenar cadenas de texto con otras o con variables numericas
-// El signo + sirve para sumar dos variables o constantes pero deden ser numericas.
-// El signo - sirve para realizar una resta entre dos variables o constantes pero deden ser numericas.
-ECHO "El codigo del proyecto es: ".$CodigoProyecto+$CodigoProyecto;
-
-
+if (!empty($_POST["Codigo"]) &&! empty($_POST["Resumen"]) &&! empty($_POST["FechaRegistro"]) && !empty($_POST["NombreProyecto"])) { 
+    $CodigoProyecto = $_POST["Codigo"];
+    $NombreProyecto = $_POST["NombreProyecto"];
+    $ResumenProyecto = $_POST["Resumen"]; 
+    $FechaProyecto = $_POST["FechaRegistro"]; 
+   
+    include("bd.php");
+    $Consulta="INSERT INTO Proyecto (CodigoProyecto, NombreProyecto, Resumen, FechaRegistro) VALUES ('".$CodigoProyecto."', '".$NombreProyecto."', '".$ResumenProyecto."', '".$FechaProyecto."')";
+    $Resultado=False;
+    try {     
+    $Resultado= mysqli_query($Conexion, $Consulta); 
+        }
+   catch (Exception $e)
+        { $Mensaje="No se pudo registrar el proyecto por error en los datos"; 
+            //$error=$e->getMessage();
+            print $e->getMessage();
+            //print $Resultado;
+        }
+    if($Resultado == False) { $Mensaje="No se pudo registrar el proyecto"; 
+                   // die($mysqli_error($Conexion));
+                 }
+    else { $Mensaje="El proyecto se registro correctamente"; }
+    } // Fin del if
+else {
+    $Mensaje="El codigo,nombre, resumen y fecha de registro del proyecto es obligatorio";
+    }
+    echo "<h3>".$Mensaje."</h3>";
 ?>
