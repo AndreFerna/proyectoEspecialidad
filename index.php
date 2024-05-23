@@ -1,19 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de proyectos</title>
-</head>
-<body>
-    <h1>GESTION DE PROYECTOS</h1>
-    <nav>
-        <ul>
-            <li><a href="vista/Proyectos.php">Proyectos</a></li>
-            <li><a href="vista/Estudiantes.php">Estudiantes</a></li>
-            <li><a href="vista/Especialidades.php">Especialidades</a></li>
-        </ul>
-    </nav>
-    <h4>By: Jean Polo Cequeda Olago</h4>
-</body>
-</html>
+<?php
+session_start();
+include("vista/Navegacion.php");
+//echo $_SESSION['loggedin']." ".$_SESSION['NombreUsuario']." ".$_SESSION['TipoUsuario'];
+//echo $_SESSION['loggedin'];
+if(!isset($_SESSION['loggedin'])){
+    echo '<h1>INICIAR SESIÓN</h1>
+    <form action="controlador/Autenticacion.php" method="post">
+    <label for="NombreUsuario" >Nombre de usuario</label>
+    <input type="text" name="NombreUsuario" placeholder="Usuario" id="NombreUsuario" required>
+    <label for="ClaveUsuario">Clave</label>
+    <input type="password" name="ClaveUsuario" placeholder="Clave" id="ClaveUsuario" required>
+    <input type="submit" value="Iniciar sesion">
+    </form> 
+    ';
+
+    }
+else {
+echo'
+<h1>BIENVENIDO AL SISTEMA PARA LA GESTION DE PROYECTOS DE ESPECIALIDAD '.$_SESSION["NombreUsuario"].'</h1>
+<img src="https://iesanfranciscodesales.edu.co/web/wp-content/uploads/2019/06/IMG_0735_mod-270x300.png">
+'; 
+echo '<a href="vista/CerrarSesion.php">Cerrar sesion</a>';
+}
+include("vista/Footer.php");
+
+?>

@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion de proyectos</title>
-</head>
-<body>
-    <H3>LISTADO DE ESTUDIANTES</H3>
-    <a href="RegistroEstudiantes.php">Registrar estudiante</a>
-    <?php 
+
+    <?php
+    include("Navegacion.php");
+    echo "<h1>LISTADO DE ESTUDIANTES</h1>";
     include("../controlador/EliminarEstudiante.php");
     include("../controlador/ListarEstudiante.php");
+    include("Footer.php"); 
     ?>
 
-</body>
-</html>

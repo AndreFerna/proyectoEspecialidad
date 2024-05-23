@@ -1,12 +1,16 @@
+<?php
+echo '
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="../css/estilo.css">
+<link rel="stylesheet" href="/cequeda_php1/css/estilo.css">
 </head>
 <body>
+<div class="Encabezado">
+  <img src="https://iesanfranciscodesales.edu.co/web/wp-content/uploads/2019/06/ESCUDO-300x300.png" alt="">
 
 <ul>
-  <li><a href="#home">Inicio</a></li>
+  <li><a href="/cequeda_php1">Inicio</a></li>
   <li class="dropdown">
     <a href="javascript:void(0)" class="dropbtn">Estudiante</a>
     <div class="dropdown-content">
@@ -29,9 +33,6 @@
     </div>
   </li>
 </ul>
+</div>';
 
-<h3>Dropdown Menu inside a Navigation Bar</h3>
-<p>Hover over the "Dropdown" link to see the dropdown menu.</p>
-
-</body>
-</html>
+?>
